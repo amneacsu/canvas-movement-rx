@@ -1,6 +1,3 @@
-const size = 20;
-const half = size / 2;
-
 const distance = function(x, y) {
   return Math.sqrt((x * x) + (y * y));
 };
@@ -25,16 +22,17 @@ const reduceTo = function(v, dist) {
 
 const appToCanvas = function(appState) {
   const dot = {
-    x: appState.dot.x - half,
-    y: appState.dot.y - half,
-    size,
+    x: appState.dot.x,
+    y: appState.dot.y,
+    size: 15,
     fill: '#f00'
   };
 
-  const mouse = {
+  const reticle = {
     x: appState.mouse.x,
     y: appState.mouse.y,
-    size: 10
+    size: 20,
+    fill: '#ddd'
   };
 
   const vector = getVector(appState.dot.x, appState.dot.y, appState.mouse.x, appState.mouse.y);
@@ -46,12 +44,12 @@ const appToCanvas = function(appState) {
     y1: appState.dot.y,
     x2: flashlightEnd.x,
     y2: flashlightEnd.y,
-    stroke: '#0f0'
+    stroke: '#f00'
   };
 
   const canvasState = {
     dot,
-    mouse,
+    reticle,
     flashlight
   };
 
