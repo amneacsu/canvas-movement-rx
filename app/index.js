@@ -1,6 +1,8 @@
-const w = 600, h = 600;
 const canvas = require('./canvas');
 const xform = require('./xform');
+
+const w = 600, h = 600;
+let frameTime;
 
 const state = {
   dot: {
@@ -15,9 +17,12 @@ const state = {
 }
 
 const tick = function() {
-  canvas.update(xform.appToCanvas(state));
+  let newFrameTime = performance.now();
+  frameTime = newFrameTime;
+  canvas.update(xform.appToCanvas(state, newFrameTime - frameTime));
   window.requestAnimationFrame(tick);
 }
 
 canvas.init('#canvas', w, h);
+frameTime = performance.now();
 tick();
