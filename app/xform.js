@@ -9,9 +9,11 @@ const appToCanvas = function(appState) {
     fill: '#f00'
   };
 
-  return {
+  const canvasState = {
     dot
-  };
+  }
+
+  return canvasState;
 }
 
 module.exports = {
