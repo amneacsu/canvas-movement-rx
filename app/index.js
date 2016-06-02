@@ -22,7 +22,9 @@ let state = {
     right: false,
     top: false,
     bottom: false
-  }
+  },
+  projectiles: [
+  ]
 };
 
 //setup events
@@ -34,7 +36,7 @@ const tick = function() {
 
   const newState = modifiers.update(state, frameTimeDiff);
 
-  //canvas.update(xform.appToCanvas(newState));
+  canvas.update(xform.appToCanvas(newState));
   window.requestAnimationFrame(tick);
 
   state = newState;
@@ -50,6 +52,6 @@ window.onmousemove = function(e) {
   state.mouse.y = e.pageY;
 }
 
-setInterval(function() {
-  canvas.update(xform.appToCanvas(newState));
-}, 1000 / frameCap);
+//setInterval(function() {
+//  canvas.update(xform.appToCanvas(newState));
+//}, 1000 / frameCap);

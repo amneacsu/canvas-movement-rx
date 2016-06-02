@@ -1,6 +1,13 @@
-const playerSpeed = 50; // px / s
+const playerSpeed = 100; // px / s
 
 const events  = (state) => {
+  //add projectile at click
+  document.addEventListener('click', (e) => {
+    state.projectiles.push({
+      empty: true
+    });
+    console.log(state.projectiles.length);
+  });
   //setup keyboard events
   document.addEventListener('keydown', (event) => {
     switch(event.key){
@@ -40,7 +47,7 @@ const events  = (state) => {
 const update = (state, diff) => {
   const movement = playerSpeed / 1000 * diff;
 
-  newState = Object.assign({}, state);
+  let newState = Object.assign({}, state);
   const dot = Object.assign({}, state.dot);
   //handle movement
   if (state.move.left && !state.move.right) {
@@ -56,6 +63,29 @@ const update = (state, diff) => {
     dot.y = dot.y + movement;
   }
   newState.dot = dot;
+
+  //handle projectiles
+  console.log(state.projectiles.length);
+  const projectiles = state.projectiles.map((p) => {
+    if (p.empty) {
+      p.coords = [dot.x, dot.y];
+      p.dir = [state.mouse.x, state.mouse.y];
+      p.empty = false;
+      p.ticks = 0;
+    }
+    else {
+      p.ticks++;
+    }
+    return p;
+  }).filter((p) => {
+    const r = p.ticks < 100;
+    if (!r) {
+      ///debugger;
+    }
+    return r;
+  });
+
+  newState.projectiles = projectiles;
 
   return newState;
 };
