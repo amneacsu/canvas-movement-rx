@@ -9,6 +9,11 @@ const resize = function() {
   }, 10);
 };
 
+const clear = function() {
+  const coords = [0, 0, canvas.width, canvas.height];
+  context.clearRect(...coords);
+}
+
 const init = function(selector, width, height) {
   console.info('init canvas');
   canvas = document.querySelector(selector);
@@ -16,6 +21,7 @@ const init = function(selector, width, height) {
 }
 
 const update = function(state) {
+  clear();
   context.fillStyle = state.dot.fill;
   context.fillRect(state.dot.x, state.dot.y, state.dot.size, state.dot.size);
 }
