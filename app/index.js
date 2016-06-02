@@ -60,11 +60,10 @@ document.addEventListener('keyup', (event) => {
 
 const update = (state, diff) => {
   const movement = playerSpeed / 1000 * diff;
-  console.log(movement);
+
   newState = Object.assign({}, state);
   const dot = Object.assign({}, state.dot);
   //handle movement
-  console.log(state.move);
   if (state.move.left && !state.move.right) {
     dot.x = dot.x - movement;
   }
