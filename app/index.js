@@ -16,11 +16,25 @@ const state = {
   }
 }
 
+//setup keyboard events
+document.addEventListener('keydown', (event) => {
+  console.log('keydown');
+});
+
+document.addEventListener('keypress', (event) => {
+  console.log('keypressed');
+});
+
 const tick = function() {
-  let newFrameTime = performance.now();
-  frameTime = newFrameTime;
-  canvas.update(xform.appToCanvas(state, newFrameTime - frameTime));
+  const newFrameTime = performance.now();
+  const frameTimeDiff = newFrameTime - frameTime;
+
+
+
+  canvas.update(xform.appToCanvas(state));
   window.requestAnimationFrame(tick);
+
+  frameTime = newFrameTime;
 }
 
 canvas.init('#canvas', w, h);

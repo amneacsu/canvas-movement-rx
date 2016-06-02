@@ -11,10 +11,10 @@ const appToCanvas = function(appState) {
 
   const canvasState = {
     dot
-  }
+  };
 
   return canvasState;
-}
+};
 
 module.exports = {
   appToCanvas
