@@ -1,0 +1,14 @@
+{
+  "name": "electron-minimal",
+  "version": "0.0.1",
+  "description": "Minimal Electron boilerplate",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "package": "electron-packager . Mini --out=./dist --overwrite --platform=darwin --arch=x64 --version=1.0.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^7.0.1",
+    "electron-prebuilt": "^1.0.1"
+  }
+}
