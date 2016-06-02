@@ -9,12 +9,11 @@ let frameTime;
 let state = {
   dot: {
     x: w / 2,
-    y: h / 2,
-    o: 0
+    y: h / 2
   },
   mouse: {
-    x: 0,
-    y: 0
+    x: 100,
+    y: 100
   },
   move: {
     left: false,

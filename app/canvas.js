@@ -22,8 +22,20 @@ const init = function(selector, width, height) {
 
 const update = function(state) {
   clear();
+
   context.fillStyle = state.dot.fill;
   context.fillRect(state.dot.x, state.dot.y, state.dot.size, state.dot.size);
+
+  context.fillStyle = 'magenta';
+  context.fillRect(state.mouse.x, state.mouse.y, state.mouse.size, state.mouse.size);
+
+  context.beginPath();
+  context.moveTo(state.flashlight.x1, state.flashlight.y1);
+  context.lineTo(state.flashlight.x2, state.flashlight.y2);
+
+  context.lineWidth = 4;
+  context.strokeStyle = state.flashlight.stroke;
+  context.stroke();
 }
 
 window.onresize = resize;
