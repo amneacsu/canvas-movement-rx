@@ -1,6 +1,7 @@
 const canvas = require('./canvas');
 const xform = require('./xform');
 const modifiers = require('./modifiers');
+//const modifiers = require('./modifiers-rx.js');
 
 const w = 600, h = 600;
 
