@@ -1,4 +1,4 @@
-const size = 20;
+const size = 15;
 const half = size / 2;
 
 const distance = function(x, y) {
@@ -25,8 +25,8 @@ const reduceTo = function(v, dist) {
 
 const appToCanvas = function(appState) {
   const dot = {
-    x: appState.dot.x - half,
-    y: appState.dot.y - half,
+    x: appState.dot.x,
+    y: appState.dot.y,
     size,
     fill: '#f00'
   };
@@ -46,7 +46,7 @@ const appToCanvas = function(appState) {
     y1: appState.dot.y,
     x2: flashlightEnd.x,
     y2: flashlightEnd.y,
-    stroke: '#0f0'
+    stroke: '#f00'
   };
 
   const canvasState = {

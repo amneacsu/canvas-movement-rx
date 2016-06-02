@@ -23,16 +23,20 @@ const init = function(selector, width, height) {
 const update = function(state) {
   clear();
 
+  // Dot / player
   context.fillStyle = state.dot.fill;
-  context.fillRect(state.dot.x, state.dot.y, state.dot.size, state.dot.size);
+  context.beginPath();
+  context.arc(state.dot.x, state.dot.y, state.dot.size, 0, 2 * Math.PI);
+  context.fill();
 
+  // Mouse position
   context.fillStyle = 'magenta';
   context.fillRect(state.mouse.x, state.mouse.y, state.mouse.size, state.mouse.size);
 
+  // Flashlight
   context.beginPath();
   context.moveTo(state.flashlight.x1, state.flashlight.y1);
   context.lineTo(state.flashlight.x2, state.flashlight.y2);
-
   context.lineWidth = 4;
   context.strokeStyle = state.flashlight.stroke;
   context.stroke();
