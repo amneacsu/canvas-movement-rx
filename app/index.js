@@ -4,7 +4,7 @@ const modifiers = require('./modifiers');
 //const modifiers = require('./modifiers-rx.js');
 
 const w = 600, h = 600;
-const frameCap = 30;
+const frameCap = 60;
 
 let frameTime;
 
@@ -44,6 +44,11 @@ const tick = function() {
 canvas.init('#canvas', w, h);
 frameTime = performance.now();
 tick();
+
+window.onmousemove = function(e) {
+  state.mouse.x = e.pageX;
+  state.mouse.y = e.pageY;
+}
 
 setInterval(function() {
   canvas.update(xform.appToCanvas(newState));

@@ -1,7 +1,5 @@
 let canvas, context;
 
-const fadeRate = 20;
-
 const resize = function() {
   setTimeout(function() {
     w = window.innerWidth;
@@ -11,23 +9,10 @@ const resize = function() {
   }, 10);
 };
 
-/*
 const clear = function() {
   const coords = [0, 0, canvas.width, canvas.height];
-  context.clearRect(...coords);
-}
-*/
-
-const fade = function() {
-  const lastImage = context.getImageData(0, 0, canvas.width, canvas.height);
-  const pixelData = lastImage.data;
-
-  const len = pixelData.length;
-  for (let i = 3; i < len; i += 4) {
-    pixelData[i] -= fadeRate;
-  }
-
-  context.putImageData(lastImage, 0, 0);
+  context.fillStyle = 'rgba(0, 0, 0, .3)';
+  context.fillRect(...coords);
 }
 
 const init = function(selector, width, height) {
@@ -37,7 +22,7 @@ const init = function(selector, width, height) {
 }
 
 const update = function(state) {
-  fade();
+  clear();
 
   // Dot / player
   context.fillStyle = state.dot.fill;
