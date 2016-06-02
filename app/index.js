@@ -4,6 +4,7 @@ const modifiers = require('./modifiers');
 //const modifiers = require('./modifiers-rx.js');
 
 const w = 600, h = 600;
+const frameCap = 30;
 
 let frameTime;
 
@@ -33,7 +34,7 @@ const tick = function() {
 
   const newState = modifiers.update(state, frameTimeDiff);
 
-  canvas.update(xform.appToCanvas(newState));
+  //canvas.update(xform.appToCanvas(newState));
   window.requestAnimationFrame(tick);
 
   state = newState;
@@ -43,3 +44,7 @@ const tick = function() {
 canvas.init('#canvas', w, h);
 frameTime = performance.now();
 tick();
+
+setInterval(function() {
+  canvas.update(xform.appToCanvas(newState));
+}, 1000 / frameCap);
