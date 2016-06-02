@@ -1,6 +1,3 @@
-const size = 15;
-const half = size / 2;
-
 const distance = function(x, y) {
   return Math.sqrt((x * x) + (y * y));
 };
@@ -27,14 +24,15 @@ const appToCanvas = function(appState) {
   const dot = {
     x: appState.dot.x,
     y: appState.dot.y,
-    size,
+    size: 15,
     fill: '#f00'
   };
 
-  const mouse = {
+  const reticle = {
     x: appState.mouse.x,
     y: appState.mouse.y,
-    size: 10
+    size: 20,
+    fill: '#ddd'
   };
 
   const vector = getVector(appState.dot.x, appState.dot.y, appState.mouse.x, appState.mouse.y);
@@ -51,7 +49,7 @@ const appToCanvas = function(appState) {
 
   const canvasState = {
     dot,
-    mouse,
+    reticle,
     flashlight
   };
 

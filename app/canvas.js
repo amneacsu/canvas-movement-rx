@@ -29,16 +29,19 @@ const update = function(state) {
   context.arc(state.dot.x, state.dot.y, state.dot.size, 0, 2 * Math.PI);
   context.fill();
 
-  // Mouse position
-  context.fillStyle = 'magenta';
-  context.fillRect(state.mouse.x, state.mouse.y, state.mouse.size, state.mouse.size);
-
   // Flashlight
   context.beginPath();
   context.moveTo(state.flashlight.x1, state.flashlight.y1);
   context.lineTo(state.flashlight.x2, state.flashlight.y2);
   context.lineWidth = 4;
   context.strokeStyle = state.flashlight.stroke;
+  context.stroke();
+
+  // Reticle position
+  context.lineWidth = 2;
+  context.strokeStyle = state.reticle.fill;
+  context.beginPath();
+  context.arc(state.reticle.x, state.reticle.y, state.reticle.size, 0, 2 * Math.PI);
   context.stroke();
 }
 
